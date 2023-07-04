@@ -266,6 +266,16 @@ public:
 		}
 	}
 
+	void gameLoopSingle(Direction dire)
+	{
+		if (determine(dire))
+		{
+			moveBlocks(dire);
+			geneBlock();
+			drawBlocks();
+		}
+	}
+
 	void gameloop(void)
 	{
 		int n = 0;
@@ -279,43 +289,22 @@ public:
 			case'w':
 			case'W':
 			case 72:
-				if (determine(Direction::up))
-				{
-					moveBlocks(Direction::up);
-					geneBlock();
-					drawBlocks();
-				}
-
+				gameLoopSingle(up);
 				break;
 			case's':
 			case'S':
 			case 80:
-				if (determine(Direction::down))
-				{
-					moveBlocks(Direction::down);
-					geneBlock();
-					drawBlocks();
-				}
+				gameLoopSingle(down);
 				break;
 			case'a':
 			case'A':
 			case 75:
-				if (determine(Direction::left))
-				{
-					moveBlocks(Direction::left);
-					geneBlock();
-					drawBlocks();
-				}
+				gameLoopSingle(left);
 				break;
 			case'd':
 			case'D':
 			case 77:
-				if (determine(Direction::right))
-				{
-					moveBlocks(Direction::right);
-					geneBlock();
-					drawBlocks();
-				}
+				gameLoopSingle(right);
 				break;
 
 			}
